@@ -99,6 +99,13 @@ super: lib.trivial.pipe super [
     '';
   }))
 
+  (patchExtension "gjsosk@vishram1123.com" (old: {
+    # untar keycodes
+    postPatch = ''
+      tar -xJf "$out/share/gnome-shell/extensions/gjsosk@vishram1123.com/keycodes.tar.xz" -C "$out/share/gnome-shell/extensions/gjsosk@vishram1123.com/keycodes"
+    '';
+  }))
+
   (patchExtension "gtk4-ding@smedius.gitlab.com" (old: {
     nativeBuildInputs = [ wrapGAppsHook3 ];
     patches = [
